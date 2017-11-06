@@ -5,6 +5,9 @@
         <router-link
           class="navbar-item"
           :to="{ name: 'home'}"><strong>TODOEX</strong></router-link>
+        <div class="navbar-item">
+          <search-bar></search-bar>
+        </div>
         <div
             class="navbar-burger burger"
             :class="toggleMenu"
@@ -16,11 +19,6 @@
         </div>
       </div>
       <div class="navbar-menu" id="navMenu" :class="toggleMenu">
-        <div class="navbar-start">
-          <div class="navbar-item">
-            <search-bar></search-bar>
-          </div>
-        </div>
         <div class="navbar-end">
           <router-link
             class="navbar-item"
