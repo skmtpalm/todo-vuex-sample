@@ -1,28 +1,33 @@
+import _ from 'lodash'
 // initial state
 const state = {
-  tasks: [
-    
-  ],
+  tasks: [],
   isFieldOpen: false,
   currentTaskId: 0
 }
 
 // getters
 const getters = {
-  allTasks: state => state.tasks,
+  allTasks: state =>  {
+    return state.tasks.filter(task => !task.isDone)
+  },
   isFieldOpen: state => state.isFieldOpen
 }
 
 // mutations
 const mutations = {
-  addTask(state, payload) {
-    state.tasks.push(payload)
+  addTask(state, task) {
+    state.tasks.push(task)
   },
   toggleField(state) {
     state.isFieldOpen = !state.isFieldOpen
   },
   incrementTaskId(state) {
     state.currentTaskId++
+  },
+  completeTask(state, targetTask) {
+    let task = _.find(state.tasks, (task) => { return task.id == targetTask.id })
+    task.isDone = true
   }
 }
 
@@ -40,6 +45,11 @@ const actions = {
   },
   toggleField({commit}) {
     commit('toggleField')
+  },
+  completeTask({ commit }, task) {
+    setTimeout(() => {
+      commit('completeTask', task)
+    }, 1000)
   }
 }
 

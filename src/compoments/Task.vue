@@ -3,7 +3,9 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <input type="checkbox">
+          <input
+            type="checkbox"
+            @click="handleChecked(task)">
         </div>
         <div class="level-item task__item__title">
           {{ task.title }}
@@ -21,7 +23,13 @@
 
 <script>
 export default {
-  props: ['task']
+  props: ['task'],
+  methods: {
+    handleChecked(task) {
+      // console.log(task)
+      this.$store.dispatch('completeTask', task)
+    }
+  }
 }
 </script>
 
