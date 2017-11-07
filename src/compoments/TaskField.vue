@@ -11,7 +11,7 @@
     <div class="button-group">
       <button
           class="button is-primary"
-          @click="saveTask({id: 4, title: taskTitle})">
+          @click="saveTask({title: taskTitle})">
         Add Task
       </button>
       <button
