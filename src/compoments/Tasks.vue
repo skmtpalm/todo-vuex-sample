@@ -13,7 +13,7 @@
             <task-field
                 v-if="isFieldOpen"
                 ></task-field>
-            <li @click="isFieldOpen = !isFieldOpen"
+            <li @click="toggleField"
                 class="task__add">+ New Task</li>
           </ul>
         </div>
@@ -26,6 +26,7 @@
 import Task from './Task.vue'
 import TaskField from './TaskField.vue'
 import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -33,14 +34,16 @@ export default {
     TaskField
   },
   data() {
-    return {
-      isFieldOpen: false
-    }
+    return {}
   },
   computed: {
     ...mapGetters({
-      allTasks: 'allTasks'
+      allTasks: 'allTasks',
+      isFieldOpen: 'isFieldOpen'
     })
+  },
+  methods: {
+    ...mapActions(['toggleField'])
   }
 }
 </script>
