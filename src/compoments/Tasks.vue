@@ -10,7 +10,11 @@
                 :task="task"
                 :key="task.id"
                 ></task>
-            <li class="task__add">+ New Task</li>
+            <task-field
+                v-if="isFieldOpen"
+                ></task-field>
+            <li @click="isFieldOpen = !isFieldOpen"
+                class="task__add">+ New Task</li>
           </ul>
         </div>
       </div>
@@ -20,12 +24,12 @@
 
 <script>
 import Task from './Task.vue'
+import TaskField from './TaskField.vue'
 
 export default {
-  data() {
-  },
   components: {
-    Task
+    Task,
+    TaskField
   },
   data() {
     return {
@@ -33,7 +37,8 @@ export default {
         { id: 1, title: 'Hello1', dueDate:'11月6日', isDone: false },
         { id: 2, title: 'Hello2', dueDate:'11月7日', isDone: false },
         { id: 3, title: 'Hello3', dueDate:'11月8日', isDone: false },
-      ]
+      ],
+      isFieldOpen: false
     }
   }
 }
